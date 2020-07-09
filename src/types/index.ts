@@ -1,4 +1,5 @@
 import reducers from 'reducers'
+export * from './products'
 export * from './tracker'
 
 export type State = ReturnType<ReturnType<typeof reducers>>

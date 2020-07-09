@@ -21,7 +21,6 @@
         "CSSNext"
     ],
     "license": "MIT",
-    "type": "module",
     "engine": ">=14",
     "dependencies": {
         "classnames": "^2.2.6",
