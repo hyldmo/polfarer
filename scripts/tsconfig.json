@@ -1,9 +1,5 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
-		"jsx": "preserve",
-		"lib": ["dom", "es2017"],
-		"maxNodeModuleJsDepth": 5,
 		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
 		"moduleResolution": "node",
