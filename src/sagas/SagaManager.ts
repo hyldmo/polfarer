@@ -6,9 +6,9 @@ import { SagaMiddleware } from 'redux-saga'
 import { cancel, fork, take } from 'redux-saga/effects'
 import { State } from 'types'
 import aboutSaga from './about'
-import trackerSaga from './tracker'
+import wineSaga from './wines'
 
-const sagas = [aboutSaga, trackerSaga]
+const sagas = [aboutSaga, wineSaga]
 
 export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR'
 

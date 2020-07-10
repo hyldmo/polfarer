@@ -1,9 +1,9 @@
-import TrackerActions from './tracker'
+import WineActions from './wines'
 import VersionActions from './version'
 import { GetMetaActions } from 'utils'
 
 export const Actions = {
-	...TrackerActions,
+	...WineActions,
 	...VersionActions
 }
 
