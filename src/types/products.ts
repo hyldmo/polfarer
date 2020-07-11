@@ -52,4 +52,4 @@ export type Product = {
 export type Wines = typeof wineResponse['hits']
 export type Wine = ArrayElement<Wines>
 export type Vintage = ArrayElement<Wine['vintages']>
-export type Polvin = Product & { meta?: Wine }
+export type Polvin = Product & { meta?: Wine | null }

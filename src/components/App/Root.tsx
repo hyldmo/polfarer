@@ -7,7 +7,6 @@ import configureStore, { history } from '../../configureStore'
 import App from './App'
 
 const store = configureStore()
-store.dispatch(Actions.loadSave())
 
 type State = {
 	error: Error | null

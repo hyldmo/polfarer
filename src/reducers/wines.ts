@@ -6,12 +6,18 @@ const CAT_WHITELIST = ['Rødvin','Hvitvin','Perlende vin, rosé','Rosévin','C
 
 const initialState = (data as Polvin[])
 	.filter(({ Varetype }) => CAT_WHITELIST.includes(Varetype))
-	.slice(0, 10)
+	.slice(0, 1)
 
 function wine (state: Polvin, action: MetaAction): Polvin {
 	if (action.meta != state.Varenavn)
 		return state;
 	switch (action.type) {
+		case 'FETCH_RATINGS':
+		case 'RATINGS_FETCH_FAILED':
+			return {
+				...state,
+				meta: null
+			}
 		case 'RATINGS_FETCHED':
 			return {
 				...state,
@@ -24,6 +30,8 @@ function wine (state: Polvin, action: MetaAction): Polvin {
 
 export default function (state = initialState, action: Action): Polvin[] {
 	switch (action.type) {
+		case 'FETCH_RATINGS':
+		case 'RATINGS_FETCH_FAILED':
 		case 'RATINGS_FETCHED':
 			return state.map(w => wine(w, action))
 		default:
