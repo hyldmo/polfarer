@@ -39,7 +39,6 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 			.reduce((acc, val) => acc.concat(val), [])
 		const categories = (queryCategories || CATEGORIES_FULL).join('|')
 
-
 		const sql = SQL`
 			SELECT * FROM wines
 			WHERE volum

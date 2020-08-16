@@ -1,4 +1,4 @@
-import { SQLStatement } from "sql-template-strings"
+import { SQLStatement } from 'sql-template-strings'
 
 export function sqlToString (sql: SQLStatement) {
 	const statement = sql.text.replace(/\s+/g, ' ')
