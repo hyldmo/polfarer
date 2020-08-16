@@ -137,10 +137,10 @@ jobs:
 
     - name: Deploy secrets
       env:
-        PG_host: ${{ secrets.PG_host}}
-        PG_database: ${{ secrets.PG_database}}
-        PG_user: ${{ secrets.PG_user}}
-        PG_password: ${{ secrets.PG_password}}
+        pg_host: ${{ secrets.PG_host}}
+        pg_database: ${{ secrets.PG_database}}
+        pg_user: ${{ secrets.PG_user}}
+        pg_password: ${{ secrets.PG_password}}
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: |
         chmod +x functions/scripts/*.sh
