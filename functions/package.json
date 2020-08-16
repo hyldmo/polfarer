@@ -1,0 +1,29 @@
+{
+  "name": "polfarer-functions",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && env-cmd firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "npm run build && firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "main": "lib/functions/src/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.8.0",
+    "pg": "^8.3.0",
+    "sql-template-strings": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/pg": "^7.14.4",
+    "firebase-functions-test": "^0.2.0",
+    "firebase-tools": "^8.6.0",
+    "typescript": "^3.8.0"
+  },
+  "private": true
+}

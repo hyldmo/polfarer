@@ -1,0 +1,59 @@
+@import "~styles/variables.less";
+
+.filters {
+	grid-area: left;
+	grid-row: 2;
+	padding-left: @grid-gap;
+
+	.tablet({
+		display: none;
+		h2 {
+			display: none;
+		}
+		&.open {
+			display: block;
+			grid-area: main;
+			width: 100vw;
+			background-color: fade(@secondary-background-color, 100%);
+			z-index: 99;
+			margin-top: -@grid-gap;
+			margin-left: -@grid-gap;
+			padding-right: @grid-gap;
+		}
+	});
+
+	h2 {
+		margin: 0;
+	}
+
+	label {
+		font-weight: 700;
+		display: block;
+
+		input {
+			margin-right: 0.5em;
+		}
+	}
+
+	> fieldset {
+		h3 {
+			margin-top: 0;
+			margin-bottom: 0.5rem;
+			font-weight: 700;
+		}
+		border: none;
+		margin-top: @grid-gap;
+		margin-bottom: @grid-gap;
+		padding: @grid-gap / 2;
+		background: white;
+		box-shadow: 0 0 1.06402px rgba(0, 0, 0, 0.0161557), 0 0 3.57381px rgba(0, 0, 0, 0.0238443), 0 0 16px rgba(0, 0, 0, 0.05);
+	}
+}
+
+.hyphen {
+	display: inline-block;
+	margin: 0.2em 0.2em;
+	height: 1px;
+	width: 0.6em;
+	background-color: currentColor;
+}

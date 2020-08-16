@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"sourceMap": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"downlevelIteration": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"target": "es5",
+		"lib": [
+			"dom",
+			"esnext"
+		],
+		"esModuleInterop": true,
+		"jsx": "react",
+		"isolatedModules": false,
+		"incremental": true,
+		"baseUrl": "src",
+		"paths": {
+			"common": ["../../common"]
+		}
+
+	},
+	"include": [
+		"./src/*"
+	]
+}

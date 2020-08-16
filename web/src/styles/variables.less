@@ -1,0 +1,15 @@
+@header-height: 5rem;
+@max-width: 50rem;
+@grid-columns: 250px auto 1fr;
+@main-color: #243539;
+@background-color: white;
+@secondary-background-color: #f8f9fa;
+@grid-gap: 1rem;
+
+@color-main: #108EE9;
+
+.tablet(@rules) {
+	@media (max-width: @max-width) {
+		@rules();
+	}
+}
