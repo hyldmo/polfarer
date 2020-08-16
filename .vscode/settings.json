@@ -1,10 +1,13 @@
 {
-	"typescript.tsdk": "node_modules\\typescript\\lib",
-	"files.associations": {
+	"files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+    "files.associations": {
         ".prettierrc": "json",
         ".env": "ini"
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
     }
 }

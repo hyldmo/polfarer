@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "functions",
+    "web"
+  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true
+}

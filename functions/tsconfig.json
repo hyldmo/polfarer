@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"outDir": "lib",
+		"module": "commonjs",
+		"target": "es2017",
+		"lib": [
+			"ES6",
+			"ES2018"
+		],
+		"strict": true,
+		"noImplicitReturns": true,
+		"sourceMap": true,
+		"noEmitOnError": true,
+		"incremental": true,
+	},
+	"include": [
+		"src"
+	]
+}

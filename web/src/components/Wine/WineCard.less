@@ -1,0 +1,114 @@
+.product {
+	&-item {
+		padding: 16px;
+		position: relative;
+		box-shadow: 0 0 1.06402px rgba(0,0,0,.0161557),0 0 3.57381px rgba(0,0,0,.0238443),0 0 16px rgba(0,0,0,.05);
+		background-color: #fff;
+		&__info-container {
+			margin-bottom: 10px;
+		}
+		&__cost_per_unit {
+			display: block;
+			font-size: 14px;
+		}
+		&__image {
+			display: block;
+			text-align: center;
+			margin: 32px auto 16px;
+			max-width: none;
+			min-height: 200px;
+			img {
+				height: 200px;
+				max-height: 200px;
+				max-width: 100%;
+			}
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		&__name {
+			font-family: Vinmonopolet Tittel,serif;
+			font-size: 20px;
+			line-height: 24px;
+			color: #002025;
+			display: block;
+			margin: 15px 0;
+			a {
+				font-family: Vinmonopolet Tittel,serif;
+				font-size: 20px;
+				line-height: 24px;
+				color: #002025;
+				display: block;
+			}
+		}
+		&__price-panel {
+			margin-bottom: 10px;
+			width: 100%;
+		}
+		&__tools {
+			text-align: left;
+			width: 100%;
+			.product-item__tool-mylist {
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				text-align: right;
+			}
+			&:after {
+				content: " ";
+				display: table;
+			}
+			&:before {
+				content: " ";
+				display: table;
+			}
+		}
+	}
+
+	&__category-name {
+		font-weight: 700;
+		font-size: 12px;
+		line-height: 100%;
+		text-transform: uppercase;
+		color: #66797c;
+		margin: 10px 0;
+		letter-spacing: 1px;
+	}
+
+	&__name {
+		margin-bottom: 4px;
+		color: #002025;
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 120%;
+	}
+	&__price {
+		color: #002025;
+		font-weight: 700;
+		line-height: 100%;
+		white-space: nowrap;
+		font-size: 28px;
+	}
+	&__volume-and-cost_per_unit {
+		display: block;
+		float: right;
+		line-height: 100%;
+	}
+	&__amount {
+		display: block;
+		text-align: right;
+	}
+
+	&-tools {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		.product-tool {
+			display: inline-block;
+		}
+	}
+	&__district {
+		color: #002025;
+		font-size: 13px;
+	}
+}
