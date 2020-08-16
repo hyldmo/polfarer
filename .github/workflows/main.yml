@@ -104,7 +104,7 @@ jobs:
         path: functions/lib/
 
   deploy:
-    if: ${{ github.ref=="master" }}
+    if: github.ref == 'refs/heads/master'
     needs: [lint, build_functions, build_web]
     runs-on: ubuntu-latest
     steps:
