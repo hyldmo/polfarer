@@ -26,27 +26,32 @@
 		margin: 0;
 	}
 
-	label {
-		font-weight: 700;
-		display: block;
 
-		input {
-			margin-right: 0.5em;
-		}
-	}
+	form {
+		position: sticky;
+		top: @grid-gap;
 
-	> fieldset {
-		h3 {
-			margin-top: 0;
-			margin-bottom: 0.5rem;
+		label {
 			font-weight: 700;
+			display: block;
+
+			input {
+				margin-right: 0.5em;
+			}
 		}
-		border: none;
-		margin-top: @grid-gap;
-		margin-bottom: @grid-gap;
-		padding: @grid-gap / 2;
-		background: white;
-		box-shadow: 0 0 1.06402px rgba(0, 0, 0, 0.0161557), 0 0 3.57381px rgba(0, 0, 0, 0.0238443), 0 0 16px rgba(0, 0, 0, 0.05);
+		fieldset {
+			h3 {
+				margin-top: 0;
+				margin-bottom: 0.5rem;
+				font-weight: 700;
+			}
+			border: none;
+			margin-top: @grid-gap;
+			margin-bottom: @grid-gap;
+			padding: @grid-gap / 2;
+			background: white;
+			box-shadow: 0 0 1.06402px rgba(0, 0, 0, 0.0161557), 0 0 3.57381px rgba(0, 0, 0, 0.0238443), 0 0 16px rgba(0, 0, 0, 0.05);
+		}
 	}
 }
 

@@ -1,9 +1,18 @@
+@import "~styles/variables.less";
+
 .product {
 	&-item {
-		padding: 16px;
+		@padding: 16px;
+		padding: @padding;
 		position: relative;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+
 		box-shadow: 0 0 1.06402px rgba(0,0,0,.0161557),0 0 3.57381px rgba(0,0,0,.0238443),0 0 16px rgba(0,0,0,.05);
-		background-color: #fff;
+		background-color: @background-color;
+
+
 		&__info-container {
 			margin-bottom: 10px;
 		}
@@ -14,7 +23,7 @@
 		&__image {
 			display: block;
 			text-align: center;
-			margin: 32px auto 16px;
+			margin: (@padding * 2) auto @padding;
 			max-width: none;
 			min-height: 200px;
 			img {
@@ -44,6 +53,9 @@
 		&__price-panel {
 			margin-bottom: 10px;
 			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
 		}
 		&__tools {
 			text-align: left;

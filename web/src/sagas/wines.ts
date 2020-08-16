@@ -21,7 +21,7 @@ function getOrderParams (orderBy: Filters['orderBy']): [string, 'desc' | 'asc'] 
 
 	case 'score':
 	default:
-		return ['meta.score', 'desc']
+		return ['score', 'desc']
 	}
 }
 
@@ -31,6 +31,7 @@ function* updateFilters (action: Action<'UPDATE_FILTERS'>) {
 	const params = new URLSearchParams({
 		...action.payload,
 		orderBy,
+		limit: 45,
 		direction
 	} as any)
 

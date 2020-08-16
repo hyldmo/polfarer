@@ -4,6 +4,7 @@ import { Client } from 'pg'
 import SQL from 'sql-template-strings'
 import { getCategories, getVolumes } from './filterUtils'
 import { ParsedQuery } from './types'
+import { sqlToString } from './utils'
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
@@ -38,7 +39,6 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 			.reduce((acc, val) => acc.concat(val), [])
 		const categories = (queryCategories || CATEGORIES_FULL).join('|')
 
-		console.info(req.url, volumes, `${priceMin} - ${priceMax}kr`, categories)
 
 		const sql = SQL`
 			SELECT * FROM wines
@@ -50,9 +50,18 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 				AND ${priceMax}
 			AND varetype = ANY(string_to_array(${categories}, '|'))
 			AND score IS NOT NULL
-			ORDER BY score DESC
-			LIMIT(${query.limit || 99})
+				ORDER BY
 		`
+		if (query.orderBy?.toLowerCase().match(/[a-z]+/)) {
+			sql.append(query.orderBy.toLocaleLowerCase())
+			sql.append(query.direction?.toUpperCase() == 'ASC'  ? ' ASC' : ' DESC')
+		}
+		else {
+			sql.append(SQL`score DESC`)
+		}
+		sql.append(SQL` LIMIT(${Math.min(query.limit || 50, 50)})`)
+
+		console.info(sqlToString(sql))
 
 		const result = await client.query(sql)
 		res.json({
