@@ -13,6 +13,7 @@ web/cypress/screenshots/
 web/src/**/*.less.d.ts
 web/public/
 web/static/*-parsed.json
+web/static/*.json
 
 .firebaserc
 .firebase/

@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions'
-import { CATEGORIES_FULL, FUNCTIONS_REGION } from '../../common'
-import { Client } from 'pg'
+import { CATEGORIES_FULL, FUNCTIONS_REGION, Wine } from '../../common'
+import { Connection, createConnection } from 'mysql2/promise'
 import SQL from 'sql-template-strings'
 import { getCategories, getVolumes } from './filterUtils'
 import { ParsedQuery } from './types'
@@ -14,17 +14,16 @@ const config = (key: string) => process.env.NODE_ENV == 'production'
 
 export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*')
-	const client = new Client({
-		host: config('pg_host'),
-		database: config('pg_database'),
-		user: config('pg_user'),
-		password: config('pg_password'),
-		port: 5432,
-		ssl: true
-	})
 
+	let conn: Connection | null = null
 	try {
-		await client.connect()
+		conn = await createConnection({
+			host: config('db_host'),
+			database: config('db_database'),
+			user: config('db_user'),
+			password: config('db_password'),
+			port: 3306
+		})
 
 		const query = req.query as ParsedQuery
 
@@ -62,10 +61,10 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 
 		console.info(sqlToString(sql))
 
-		const result = await client.query(sql)
+		const [results, fields] = await conn.query(sql)
 		res.json({
-			count: result.rowCount,
-			data: result.rows
+			data: results,
+			meta: fields
 		})
 	} catch (e) {
 		console.error(e)
@@ -73,6 +72,6 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 			error: e
 		})
 	} finally {
-		client.end()
+		conn?.end()
 	}
 })

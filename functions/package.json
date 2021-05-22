@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
+    "dev": "npm run serve",
     "serve": "npm run build && env-cmd firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -16,11 +17,10 @@
   "dependencies": {
     "firebase-admin": "^8.0.0",
     "firebase-functions": "^3.8.0",
-    "pg": "^8.3.0",
+    "mysql2": "^2.2.5",
     "sql-template-strings": "^2.2.2"
   },
   "devDependencies": {
-    "@types/pg": "^7.14.4",
     "firebase-functions-test": "^0.2.0",
     "firebase-tools": "^8.6.0",
     "typescript": "^3.8.0"
