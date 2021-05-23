@@ -30,8 +30,10 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 		const volumes = getVolumes((query.volumes || '').split(','))
 
 		const price = (query.price || ',').split(',')
-		const priceMin = parseInt(price[0], 10) || 0
-		const priceMax = parseInt(price[1], 10) || 99999999
+		const prices =[
+			parseInt(price[0], 10) || 0,
+			parseInt(price[1], 10) || 99999999
+		]
 
 		const queryCategories = query.categories?.split(',')
 			.map(getCategories)
@@ -44,8 +46,8 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 				BETWEEN ${volumes.min}
 				AND ${volumes.max}
 			AND pris
-				BETWEEN ${priceMin}
-				AND ${priceMax}
+				BETWEEN ${Math.min(...prices)}
+				AND ${Math.max(...prices)}
 			AND varetype IN(${categories})
 			AND score IS NOT NULL
 				ORDER BY
@@ -61,10 +63,10 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 
 		console.info(sqlToString(sql))
 
-		const [results, fields] = await conn.query(sql)
+		const [results] = await conn.query(sql)
 		res.json({
 			data: results,
-			meta: fields
+			count: (results as []).length
 		})
 	} catch (e) {
 		console.error(e)
