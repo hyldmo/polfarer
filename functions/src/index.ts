@@ -36,17 +36,17 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 		const queryCategories = query.categories?.split(',')
 			.map(getCategories)
 			.reduce((acc, val) => acc.concat(val), [])
-		const categories = (queryCategories || CATEGORIES_FULL).join('|')
+		const categories = (queryCategories || CATEGORIES_FULL)
 
 		const sql = SQL`
-			SELECT * FROM wines
+			SELECT * FROM wine_view
 			WHERE volum
 				BETWEEN ${volumes.min}
 				AND ${volumes.max}
 			AND pris
 				BETWEEN ${priceMin}
 				AND ${priceMax}
-			AND varetype = ANY(string_to_array(${categories}, '|'))
+			AND varetype IN(${categories})
 			AND score IS NOT NULL
 				ORDER BY
 		`
@@ -57,7 +57,7 @@ export const wines = functions.region(FUNCTIONS_REGION).https.onRequest(async (r
 		else {
 			sql.append(SQL`score DESC`)
 		}
-		sql.append(SQL` LIMIT(${Math.min(query.limit || 50, 50)})`)
+		sql.append(SQL` LIMIT ${Math.min(query.limit || 50, 50)}`)
 
 		console.info(sqlToString(sql))
 
