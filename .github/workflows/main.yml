@@ -150,5 +150,5 @@ jobs:
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: | # Sed fixes node version requirements for firebase function
-        sed -i -e 's/>=14/8/g' functions/package.json
+        sed -i -e 's/>=14/10/g' functions/package.json
         yarn firebase deploy --token "$FIREBASE_TOKEN"
